@@ -1,21 +1,16 @@
 /* eslint-disable prettier/prettier */
-import { createAppContainer} from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import React from 'react';
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../screens/home';
-import About from '../screens/about';
 import ReviewDetails from '../screens/reviewDetails';
-const screens={
- Home:{
-     screen: Home
- },
- About:{
-    screen: About
- },
- ReviewDetails:{
-    screen: ReviewDetails
- },
+const Stack = createNativeStackNavigator();
+
+export default function HomeStack() {
+   return (
+       <Stack.Navigator initialRouteName="Home">
+         <Stack.Screen name="Home" component={Home} />
+         <Stack.Screen name="ReviewDetails" component={ReviewDetails} />
+       </Stack.Navigator>
+   );
 }
-
-const HomeStack =createStackNavigator(screens);
-
-export default createAppContainer(HomeStack)
